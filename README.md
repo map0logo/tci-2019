@@ -45,7 +45,7 @@ Al finalizar el curso el estudiante debe ser capaz de:
 
 ## Enfoque de enseñanza
 
-El enfoque del curso es a través de la programación en Python, y la evaluación es mediante la elaboración de análisis sobre casos de estudio., básicamente uno por cada una de las unidades del contenido.
+El enfoque del curso es a través de la programación en Python, y la evaluación es mediante la elaboración de análisis sobre casos de estudio. En principio, uno por cada una de las unidades del contenido. Hay cuatro temas cada uno equivale al 25% de la calificación definitiva.
 
 # Bibliografía
 
