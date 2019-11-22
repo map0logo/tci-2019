@@ -1,0 +1,657 @@
+
+
+
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Curso de Teoría de Colas e Inventarios 2019">
+      
+      
+      
+        <meta name="author" content="Francisco Palm">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copiar al portapapeles">
+      
+        <meta name="lang:clipboard.copied" content="Copiado al portapapeles">
+      
+        <meta name="lang:search.language" content="en, es">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No se encontraron documentos">
+      
+        <meta name="lang:search.result.one" content="1 documento encontrado">
+      
+        <meta name="lang:search.result.other" content="# documentos encontrados">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>Cadenas de Markov - Teoría de Colas e Inventarios 2019</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/application.30686662.css">
+      
+      
+    
+    
+      <script src="assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#cadenas-de-markov" tabindex="1" class="md-skip">
+        Saltar a contenido
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="Teoría de Colas e Inventarios 2019" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Teoría de Colas e Inventarios 2019
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Cadenas de Markov
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Teclee para comenzar búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="Teoría de Colas e Inventarios 2019" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Teoría de Colas e Inventarios 2019
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Cadenas de Markov
+      </label>
+    
+    <a href="01cm_definiciones.html" title="Cadenas de Markov" class="md-nav__link md-nav__link--active">
+      Cadenas de Markov
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transiciones-de-estado" class="md-nav__link">
+    Transiciones de Estado
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    Ejemplo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probabilidades-de-estado" class="md-nav__link">
+    Probabilidades de Estado
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clasificacion-de-los-estados-en-un-proceso-de-markov" class="md-nav__link">
+    Clasificación de los estados en un proceso de Markov
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="02cm_estado_estable.html" title="Análisis de Estado Estable" class="md-nav__link">
+      Análisis de Estado Estable
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transiciones-de-estado" class="md-nav__link">
+    Transiciones de Estado
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    Ejemplo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probabilidades-de-estado" class="md-nav__link">
+    Probabilidades de Estado
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clasificacion-de-los-estados-en-un-proceso-de-markov" class="md-nav__link">
+    Clasificación de los estados en un proceso de Markov
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="cadenas-de-markov">Cadenas de Markov<a class="headerlink" href="#cadenas-de-markov" title="Permanent link">&para;</a></h1>
+<h2 id="transiciones-de-estado">Transiciones de Estado<a class="headerlink" href="#transiciones-de-estado" title="Permanent link">&para;</a></h2>
+<p>La secuencia de variables aleatorias <span><span class="MathJax_Preview">x_0, x_1, x_2, \dots, x_t , \dots</span><script type="math/tex">x_0, x_1, x_2, \dots, x_t , \dots</script></span> representa un <strong>proceso estocástico</strong>.</p>
+<p>Cuando se indexan solamente los puntos en el tiempo en el que ocurren <em>cambios</em> significativos, se habla de <strong>procesos estocásticos de tiempo discreto</strong>.</p>
+<p>Hablamos de <strong>estado</strong> como la condición o característica de un sistema en momento dado. Se asume que hay un número finito de estados numerados <span><span class="MathJax_Preview">1, \dots, N</span><script type="math/tex">1, \dots, N</script></span> que pueden describir al sistema en un cualquier momento. Cuando el sistema cambia de un estado a otro se dice que ocurre una <strong>transición</strong>.</p>
+<div>
+<div class="MathJax_Preview">\begin{equation}
+P (x_{t+1} = s_{t+1} | x_t = s_t , x_{t−1} = s_{t−1}, \dots , x_1 = s_1, x_0 = s_0)\\
+= P (x_{t+1} = s_{t+1} | x_t = s_t )
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+P (x_{t+1} = s_{t+1} | x_t = s_t , x_{t−1} = s_{t−1}, \dots , x_1 = s_1, x_0 = s_0)\\
+= P (x_{t+1} = s_{t+1} | x_t = s_t )
+\end{equation}</script>
+</div>
+<p>Se conoce como <strong>propiedad de Markov</strong> el hecho que la probabilidad del estado en <span><span class="MathJax_Preview">t+1</span><script type="math/tex">t+1</script></span> dependa solamente del estado en <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>.</p>
+<p>Y como cada <span><span class="MathJax_Preview">x_t</span><script type="math/tex">x_t</script></span> depende tan solo de <span><span class="MathJax_Preview">x_{t-1}</span><script type="math/tex">x_{t-1}</script></span> e influye solamente en <span><span class="MathJax_Preview">x_{t+1}</span><script type="math/tex">x_{t+1}</script></span> se dice que el proceso es una <strong>cadena de Markov</strong>.</p>
+<p>Si, además el número de estados es numerable y finito, se habla de un <strong>cadena de Markov de estado finito</strong>.</p>
+<p>Una suposición adicional es que la probabilidad de transición de un estado <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> a un estado <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> es constante en el tiempo.</p>
+<div>
+<div class="MathJax_Preview">\begin{equation}
+P (x_{t+1} = j | x_t = i) = p_{ij}
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+P (x_{t+1} = j | x_t = i) = p_{ij}
+\end{equation}</script>
+</div>
+<p>es independiente del índice del tiempo <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>, esto se conoce como la <strong>propiedad estacionaria</strong>.</p>
+<p>La probabilidad <span><span class="MathJax_Preview">p_{ij}</span><script type="math/tex">p_{ij}</script></span> se denomina <strong>probabilidad de transición</strong>, al definirse para todos los estados del sistema <span><span class="MathJax_Preview">i,j = 1, 2, \dots, N</span><script type="math/tex">i,j = 1, 2, \dots, N</script></span>, y se suelen escribir en una <strong>matriz de probabilidades de transición</strong>.</p>
+<div>
+<div class="MathJax_Preview">\begin{equation}
+\mathbf{P} = \begin{bmatrix}
+       p_{11} &amp; p_{12} &amp; \dots &amp; p_{1N} \\
+       p_{21} &amp; p_{22} &amp; \dots &amp; p_{2N} \\
+       \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+       p_{N1} &amp; p_{N2} &amp; \dots &amp; p_{NN} \\
+     \end{bmatrix}
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+\mathbf{P} = \begin{bmatrix}
+       p_{11} & p_{12} & \dots & p_{1N} \\
+       p_{21} & p_{22} & \dots & p_{2N} \\
+       \vdots & \vdots & \ddots & \vdots \\
+       p_{N1} & p_{N2} & \dots & p_{NN} \\
+     \end{bmatrix}
+\end{equation}</script>
+</div>
+<p>Además, los elementos de cada fila forma una distribución de probabilidades discreta, por lo tanto:</p>
+<div>
+<div class="MathJax_Preview">\begin{equation}
+    \displaystyle\sum_{j=1}^{N}p_{ij}=1
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+    \displaystyle\sum_{j=1}^{N}p_{ij}=1
+\end{equation}</script>
+</div>
+<p>Un proceso de Markov comienza en algún momento inicial <span><span class="MathJax_Preview">t = 0</span><script type="math/tex">t = 0</script></span>. Si el estado <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span> no se conoce con certeza, entonces debemos especificar las probabilidades con las que el sistema se encuentra inicialmente en cada uno de los <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> estados. Denotamos esto como <span><span class="MathJax_Preview">P(x_0 = i) = p_i(0)</span><script type="math/tex">P(x_0 = i) = p_i(0)</script></span> para cada estado <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, y usamos el vector</p>
+<div>
+<div class="MathJax_Preview">\begin{equation}
+    \mathbf{p}(0) = [p_1(0), p_2(0), \dots, p_N(0)]
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+    \mathbf{p}(0) = [p_1(0), p_2(0), \dots, p_N(0)]
+\end{equation}</script>
+</div>
+<p>para describir la <strong>distribución de probabilidad inicial</strong> del sistema.</p>
+<h2 id="ejemplo">Ejemplo<a class="headerlink" href="#ejemplo" title="Permanent link">&para;</a></h2>
+<p>En un lugar se pueden describir los días como soleados, nublados, y lluviosos. Después de observar los patrones históricos, la condición del clima del siguiente día puede ser descrita de acuerdo a las siguientes probabilidades de transición:</p>
+<div>
+<div class="MathJax_Preview">\begin{equation}
+\mathbf{P} = \begin{bmatrix}
+       0.7 &amp; 0.1 &amp; 0.2 \\
+       0.2 &amp; 0.7 &amp; 0.1 \\
+       0.5 &amp; 0.2 &amp; 0.3 \\
+     \end{bmatrix}
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+\mathbf{P} = \begin{bmatrix}
+       0.7 & 0.1 & 0.2 \\
+       0.2 & 0.7 & 0.1 \\
+       0.5 & 0.2 & 0.3 \\
+     \end{bmatrix}
+\end{equation}</script>
+</div>
+<p>Las probabilidades de un paso pueden ilustrarse mediante un <strong>diagrama de transición de estados</strong>, en el que los estados se representan por <em>nodos</em> y las posibles transiciones como <em>vértices</em>.</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Digraph</span>
+<span class="c1"># Create Digraph object</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="n">rankdir</span><span class="o">=</span><span class="s1">&#39;RL&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Diagrama de transición&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;16&#39;</span><span class="p">,</span> <span class="n">fontname</span><span class="o">=</span><span class="s1">&#39;Lato&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="n">fontname</span><span class="o">=</span><span class="s1">&#39;Lato&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="n">fontname</span><span class="o">=</span><span class="s1">&#39;Lato&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add nodes</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;Soleado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;Nublado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;Lluvioso&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add edges</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.7&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.7&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.5&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;0.3&#39;</span><span class="p">)</span>
+
+<span class="c1"># Visualize the graph</span>
+<span class="n">g</span>
+</pre></div>
+
+<p><img alt="svg" src="output_3_0.svg" /></p>
+<p>Si se desea conocer si una determinada condición del clima prevalece durante dos días, se puede utilizar un <strong>árbol de transición</strong> de dos pasos.</p>
+<div class="codehilite"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="n">rankdir</span><span class="o">=</span><span class="s1">&#39;LR&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Árbol de transición&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;16&#39;</span><span class="p">,</span> <span class="n">fontname</span><span class="o">=</span><span class="s1">&#39;Lato&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="n">fontname</span><span class="o">=</span><span class="s1">&#39;Lato&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="n">fontname</span><span class="o">=</span><span class="s1">&#39;Lato&#39;</span><span class="p">)</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="s1">&#39;Soleado&#39;</span><span class="p">)</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1b&#39;</span><span class="p">,</span> <span class="s1">&#39;Soleado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2b&#39;</span><span class="p">,</span> <span class="s1">&#39;Nublado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;3b&#39;</span><span class="p">,</span> <span class="s1">&#39;Lluvioso&#39;</span><span class="p">)</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1c&#39;</span><span class="p">,</span> <span class="s1">&#39;Soleado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2c&#39;</span><span class="p">,</span> <span class="s1">&#39;Nublado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;3c&#39;</span><span class="p">,</span> <span class="s1">&#39;Lluvioso&#39;</span><span class="p">)</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1d&#39;</span><span class="p">,</span> <span class="s1">&#39;Soleado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">,</span> <span class="s1">&#39;Nublado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;3d&#39;</span><span class="p">,</span> <span class="s1">&#39;Lluvioso&#39;</span><span class="p">)</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1e&#39;</span><span class="p">,</span> <span class="s1">&#39;Soleado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2e&#39;</span><span class="p">,</span> <span class="s1">&#39;Nublado&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;3e&#39;</span><span class="p">,</span> <span class="s1">&#39;Lluvioso&#39;</span><span class="p">)</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="s1">&#39;1b&#39;</span><span class="p">,</span> <span class="s1">&#39;0.7&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="s1">&#39;2b&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;1a&#39;</span><span class="p">,</span> <span class="s1">&#39;3b&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;1b&#39;</span><span class="p">,</span> <span class="s1">&#39;1c&#39;</span><span class="p">,</span> <span class="s1">&#39;0.7&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;1b&#39;</span><span class="p">,</span> <span class="s1">&#39;2c&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;1b&#39;</span><span class="p">,</span> <span class="s1">&#39;3c&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;2b&#39;</span><span class="p">,</span> <span class="s1">&#39;1d&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;2b&#39;</span><span class="p">,</span> <span class="s1">&#39;2d&#39;</span><span class="p">,</span> <span class="s1">&#39;0.7&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;2b&#39;</span><span class="p">,</span> <span class="s1">&#39;3d&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;3b&#39;</span><span class="p">,</span> <span class="s1">&#39;1e&#39;</span><span class="p">,</span> <span class="s1">&#39;0.5&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;3b&#39;</span><span class="p">,</span> <span class="s1">&#39;2e&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;3b&#39;</span><span class="p">,</span> <span class="s1">&#39;3e&#39;</span><span class="p">,</span> <span class="s1">&#39;0.3&#39;</span><span class="p">)</span>
+
+<span class="n">g</span>
+</pre></div>
+
+<p><img alt="svg" src="output_5_0.svg" /></p>
+<h2 id="probabilidades-de-estado">Probabilidades de Estado<a class="headerlink" href="#probabilidades-de-estado" title="Permanent link">&para;</a></h2>
+<p>Si se denota la probabilidad <span><span class="MathJax_Preview">p_{ij}^{(n)}</span><script type="math/tex">p_{ij}^{(n)}</script></span> como la probabilidad de transición del estado <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> al estado <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> en <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> pasos.</p>
+<p>El cálculo de <span><span class="MathJax_Preview">p_{11}^{(2)}</span><script type="math/tex">p_{11}^{(2)}</script></span> sería</p>
+<div>
+<div class="MathJax_Preview">\begin{equation}
+(0.7)(0.7)+(0.1)(0.2)+(0.2)(0.5)\\
+=(p_{11})(p_{11})+(p_{12})(p_{21})+(p_{13})(p_{31})\\
+= 0.61
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+(0.7)(0.7)+(0.1)(0.2)+(0.2)(0.5)\\
+=(p_{11})(p_{11})+(p_{12})(p_{21})+(p_{13})(p_{31})\\
+= 0.61
+\end{equation}</script>
+</div>
+<p>Es posible generalizar que para cualquier <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> y <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, <span><span class="MathJax_Preview">p_{ij}^{(2)}</span><script type="math/tex">p_{ij}^{(2)}</script></span> es el producto interno de la <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-ésima fila de <span><span class="MathJax_Preview">\mathbf{P}</span><script type="math/tex">\mathbf{P}</script></span> con la <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>-ésima columna de <span><span class="MathJax_Preview">\mathbf{P}</span><script type="math/tex">\mathbf{P}</script></span>.</p>
+<div>
+<div class="MathJax_Preview">\begin{equation}
+    p_{ij}^{(2)} = \sum_{k=1}^{N}p_{ik}p_{kj}
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+    p_{ij}^{(2)} = \sum_{k=1}^{N}p_{ik}p_{kj}
+\end{equation}</script>
+</div>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]])</span>
+<span class="n">p</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="nb">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">.</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3</span><span class="p">]])</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">p2</span> <span class="o">=</span> <span class="n">p</span> <span class="err">@</span> <span class="n">p</span>
+<span class="n">p2</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="nb">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">.</span><span class="mi">61</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">21</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">33</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">53</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">14</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">54</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">21</span><span class="p">]])</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">rf</span><span class="s1">&#39;$p^2_{{11}} =$ {p2[0, 0]:.2f}&#39;</span><span class="p">))</span>
+</pre></div>
+
+<p><span><span class="MathJax_Preview">p^2_{11} =</span><script type="math/tex">p^2_{11} =</script></span> 0.61</p>
+<p>Lo que implica que la probabilidad que sea soleado dentro de dos días dado que hoy es soleado es igual a <span><span class="MathJax_Preview">0.61</span><script type="math/tex">0.61</script></span>.</p>
+<hr />
+<p>Siendo <code class="codehilite"><span class="o">@</span></code> en numpy el operador para la multiplicación matricial o la multiplicación punto, siendo <code class="codehilite"><span class="n">p</span> <span class="o">@</span> <span class="n">p</span></code> equivalente a <code class="codehilite"><span class="n">p</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code>.</p>
+<p>Se puede generalizar aún más esta expresión, llegando a lo que se conoce como la <strong>Ecuación de Chapman-Kolgomorov</strong>:</p>
+<div>
+<div class="MathJax_Preview">\begin{equation}
+    p_{ij}^{(n)} = p_{ij}^{n} = \sum_{k=1}^{N}p_{ik}^{n-m}p_{kj}^m
+\end{equation}</div>
+<script type="math/tex; mode=display">\begin{equation}
+    p_{ij}^{(n)} = p_{ij}^{n} = \sum_{k=1}^{N}p_{ik}^{n-m}p_{kj}^m
+\end{equation}</script>
+</div>
+<h2 id="clasificacion-de-los-estados-en-un-proceso-de-markov">Clasificación de los estados en un proceso de Markov<a class="headerlink" href="#clasificacion-de-los-estados-en-un-proceso-de-markov" title="Permanent link">&para;</a></h2>
+<p>Un estado <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> es <strong>alcanzable</strong> desde el estado <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> si hay una secuencia de transiciones que comienza en estado <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> y termina en estado <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>. Esto es, <span><span class="MathJax_Preview">p^{(n)}_{ij} \gt 0</span><script type="math/tex">p^{(n)}_{ij} \gt 0</script></span> para algún <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>.</p>
+<p>Una cadena Markov <strong>irreducible</strong> es aquella en la que se puede llegar a todos los estados desde todos los demás estados. Es decir, en una cadena irreducible, no es posible que el proceso quede <em>atrapado</em> y de ahí en adelante solo pueda hacer transiciones dentro de algún subconjunto de los estados.</p>
+<p>Se dice que un conjunto de estados está <strong>cerrado</strong> si no se puede llegar a ningún estado fuera del conjunto desde ningún estado dentro del conjunto. Esto significa que una vez que el sistema entra en cualquier estado en el conjunto, nunca saldrá de este conjunto. En una cadena irreducible, sus estados constituyen un conjunto cerrado y ningún subconjunto de estos estados está cerrado.</p>
+<p>Un caso particularmente interesante se presenta si un conjunto cerrado contiene sólo un estado. Este estado <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> se llama <strong>estado absorbente</strong>, y <span><span class="MathJax_Preview">p_{ii} = 1</span><script type="math/tex">p_{ii} = 1</script></span>. El sistema nunca deja un estado de absorción.</p>
+<p>Un estado <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> es un <strong>estado transitorio</strong> si hay una transición del estado <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> a otro estado <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> desde la cual no se puede volver a alcanzar el estado <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>. Por lo tanto, siempre que se sale de un estado transitorio, hay una probabilidad positiva de que no se vuelva a ocupar nunca más. Y por lo tanto, la probabilidad a largo plazo de que un sistema se encuentre en un estado transitorio es esencialmente nula porque, con el tiempo, se saldrá del estado y no volverá a entrar.</p>
+<p>Un <strong>estado recurrente</strong> es cualquier estado que no sea transitorio. En una cadena de Markov irreducible de estados finitos, todos los estados son recurrentes. Un caso especial de un estado recurrente es un estado absorbente, desde el cual no se puede alcanzar ningún otro estado.</p>
+<p>Se dice que un estado es <strong>periódico</strong> si está ocupado sólo en momentos que difieren entre sí por múltiplos de alguna constante mayor que <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="index.html" title="Welcome to MkDocs" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Welcome to MkDocs
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="02cm_estado_estable.html" title="Análisis de Estado Estable" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Siguiente
+                </span>
+                Análisis de Estado Estable
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Francisco Palm
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+          
+            
+              
+              
+                <script src="assets/javascripts/lunr/lunr.es.js"></script>
+              
+            
+          
+          
+            <script src="assets/javascripts/lunr/lunr.multi.js"></script>
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      
+        <script src="search/search_index.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
