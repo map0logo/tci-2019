@@ -174,8 +174,8 @@
 
 
   <li class="md-nav__item">
-    <a href="index.html" title="Welcome to MkDocs" class="md-nav__link">
-      Welcome to MkDocs
+    <a href="index.html" title="Teoría de Colas e Inventarios" class="md-nav__link">
+      Teoría de Colas e Inventarios
     </a>
   </li>
 
@@ -506,35 +506,35 @@ P (x_{t+1} = j | x_t = i) = p_{ij}
     p_{ij}^{(2)} = \sum_{k=1}^{N}p_{ik}p_{kj}
 \end{equation}</script>
 </div>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]])</span>
 <span class="n">p</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span><span class="nb">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">.</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3</span><span class="p">]])</span>
+<div class="codehilite"><pre><span></span><span class="err">array([[0.7, 0.1, 0.2],</span>
+<span class="err">       [0.2, 0.7, 0.1],</span>
+<span class="err">       [0.5, 0.2, 0.3]])</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">p2</span> <span class="o">=</span> <span class="n">p</span> <span class="err">@</span> <span class="n">p</span>
+<div class="codehilite"><pre><span></span><span class="n">p2</span> <span class="o">=</span> <span class="n">p</span> <span class="o">@</span> <span class="n">p</span>
 <span class="n">p2</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span><span class="nb">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">.</span><span class="mi">61</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">21</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">33</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">53</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">14</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">54</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">21</span><span class="p">]])</span>
+<div class="codehilite"><pre><span></span><span class="err">array([[0.61, 0.18, 0.21],</span>
+<span class="err">       [0.33, 0.53, 0.14],</span>
+<span class="err">       [0.54, 0.25, 0.21]])</span>
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">rf</span><span class="s1">&#39;$p^2_{{11}} =$ {p2[0, 0]:.2f}&#39;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;$p^2_{{11}} =$ </span><span class="si">{p2[0, 0]:.2f}</span><span class="s1">&#39;</span><span class="p">))</span>
 </pre></div>
 
 <p><span><span class="MathJax_Preview">p^2_{11} =</span><script type="math/tex">p^2_{11} =</script></span> 0.61</p>
 <p>Lo que implica que la probabilidad que sea soleado dentro de dos días dado que hoy es soleado es igual a <span><span class="MathJax_Preview">0.61</span><script type="math/tex">0.61</script></span>.</p>
 <hr />
-<p>Siendo <code class="codehilite"><span class="o">@</span></code> en numpy el operador para la multiplicación matricial o la multiplicación punto, siendo <code class="codehilite"><span class="n">p</span> <span class="o">@</span> <span class="n">p</span></code> equivalente a <code class="codehilite"><span class="n">p</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code>.</p>
+<p>Siendo <code class="codehilite"><span class="err">@</span></code> en numpy el operador para la multiplicación matricial o la multiplicación punto, siendo <code class="codehilite"><span class="err">p @ p</span></code> equivalente a <code class="codehilite"><span class="err">p.dot(p)</span></code>.</p>
 <p>Se puede generalizar aún más esta expresión, llegando a lo que se conoce como la <strong>Ecuación de Chapman-Kolgomorov</strong>:</p>
 <div>
 <div class="MathJax_Preview">\begin{equation}
@@ -572,7 +572,7 @@ P (x_{t+1} = j | x_t = i) = p_{ij}
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="index.html" title="Welcome to MkDocs" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="index.html" title="Teoría de Colas e Inventarios" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -581,7 +581,7 @@ P (x_{t+1} = j | x_t = i) = p_{ij}
                 <span class="md-footer-nav__direction">
                   Anterior
                 </span>
-                Welcome to MkDocs
+                Teoría de Colas e Inventarios
               </span>
             </div>
           </a>
